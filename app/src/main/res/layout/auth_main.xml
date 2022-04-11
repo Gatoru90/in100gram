@@ -43,15 +43,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/PasswordView"
-            android:hint="Введите пароль"
+            android:inputType="textPassword"
             android:minHeight="48dp"
             android:paddingLeft="20px"
+            android:hint="Введите пароль"
             android:paddingRight="20px" />
         <LinearLayout
             android:paddingLeft="20px"
             android:paddingRight="20px"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:layout_below="@+id/PasswordEdit"
             android:id="@+id/saveLayout"
             android:orientation="horizontal">
@@ -66,15 +68,61 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 tools:ignore="TouchTargetSizeCheck" />
+
         </LinearLayout>
 
-        <Button
-            android:id="@+id/authBtn"
-            android:layout_width="200dp"
+        <LinearLayout
+            android:padding="20px"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/saveLayout"
-            android:layout_margin="100dp"
-            android:text="Вход" />
+            android:id="@+id/showLayout"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Отображать пароль"
+                android:id="@+id/showText"/>
+
+            <CheckBox
+                android:id="@+id/showCheck"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/showLayout"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/authBtn"
+                    android:layout_width="150dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:text="Вход" />
+                <Space
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:id="@+id/RegBtn"
+                    android:layout_gravity="center"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Регистрация" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

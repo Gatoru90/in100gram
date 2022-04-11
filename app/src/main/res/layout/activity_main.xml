@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/cloud_btn"
-        android:text="Cloud"
+        android:text="Messanger"
         android:padding="8dp"
         android:layout_margin="16dp"
         android:layout_centerInParent="true"/>
@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/messenger_btn"
-        android:text="Messenger"
+        android:text="Authorization"
         android:padding="8dp"
         android:layout_margin="16dp"
         android:layout_centerInParent="true"/>
