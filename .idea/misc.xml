@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/DimaGatoru/Desktop/EasyTutoFileManager-master/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2985" />
+        <entry key="..\:/Users/DimaGatoru/Desktop/EasyTutoFileManager-master/app/src/main/res/drawable/ic_baseline_folder_24.xml" value="0.2985" />
+        <entry key="..\:/Users/DimaGatoru/Desktop/EasyTutoFileManager-master/app/src/main/res/drawable/ic_baseline_insert_drive_file_24.xml" value="0.2985" />
+        <entry key="..\:/Users/DimaGatoru/Desktop/EasyTutoFileManager-master/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2985" />
+        <entry key="..\:/Users/DimaGatoru/Desktop/EasyTutoFileManager-master/app/src/main/res/layout/activity_file_list.xml" value="0.3378623188405797" />
+        <entry key="..\:/Users/DimaGatoru/Desktop/EasyTutoFileManager-master/app/src/main/res/layout/activity_main.xml" value="0.3378623188405797" />
+        <entry key="..\:/Users/DimaGatoru/Desktop/EasyTutoFileManager-master/app/src/main/res/layout/auth_main.xml" value="0.3875" />
+        <entry key="..\:/Users/DimaGatoru/Desktop/EasyTutoFileManager-master/app/src/main/res/layout/messenger_main.xml" value="0.33" />
+        <entry key="..\:/Users/DimaGatoru/Desktop/EasyTutoFileManager-master/app/src/main/res/layout/messenger_other_recycler.xml" value="0.3875" />
+        <entry key="..\:/Users/DimaGatoru/Desktop/EasyTutoFileManager-master/app/src/main/res/layout/messenger_recycler.xml" value="0.3875" />
+        <entry key="..\:/Users/DimaGatoru/Desktop/EasyTutoFileManager-master/app/src/main/res/layout/recycler_item.xml" value="0.3378623188405797" />
+        <entry key="..\:/Users/DimaGatoru/Desktop/EasyTutoFileManager-master/app/src/main/res/layout/selectedfiles.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/DimaGatoru/Desktop/EasyTutoFileManager-master/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2985" />
+        <entry key="..\:/Users/DimaGatoru/Desktop/EasyTutoFileManager-master/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2985" />
+        <entry key="..\:/Users/DimaGatoru/Desktop/in100gram/app/src/main/res/layout/auth_main.xml" value="0.3875" />
+        <entry key="..\:/Users/DimaGatoru/Desktop/in100gram/app/src/main/res/layout/messenger_recycler.xml" value="0.3875" />
+        <entry key="..\:/Users/DimaGatoru/Desktop/in100gram/app/src/main/res/layout/recycler_item.xml" value="0.3875" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

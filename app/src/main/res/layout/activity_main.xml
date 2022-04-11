@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#1DE9B6"
+    tools:context=".MainActivity">
+
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/storage_btn"
+        android:text="STORAGE"
+        android:padding="8dp"
+        android:layout_margin="16dp"
+        android:layout_centerInParent="true"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cloud_btn"
+        android:text="Cloud"
+        android:padding="8dp"
+        android:layout_margin="16dp"
+        android:layout_centerInParent="true"/>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/messenger_btn"
+        android:text="Messenger"
+        android:padding="8dp"
+        android:layout_margin="16dp"
+        android:layout_centerInParent="true"/>
+
+</LinearLayout>
