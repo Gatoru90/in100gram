@@ -17,8 +17,9 @@ public class MessengerActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.messenger_main);
 
-        RecyclerView messenger_recycler = findViewById(R.id.recycler_gchat);
+        RecyclerView MessengerRecycler = findViewById(R.id.recycler_gchat);
 
-        messenger_recycler.setLayoutManager(new LinearLayoutManager(this));
+        MessengerRecycler.setLayoutManager(new LinearLayoutManager(this));
+        MessengerRecycler.setAdapter(new MessengerAdapter());
     }
 }

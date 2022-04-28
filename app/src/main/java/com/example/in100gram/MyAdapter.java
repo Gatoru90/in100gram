@@ -60,7 +60,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public MyAdapter(Context context, File[] filesAndFolders) {
         this.context = context;
         this.filesAndFolders = filesAndFolders;
-
     }
 
     private ArrayList<File> files = new ArrayList<>();
