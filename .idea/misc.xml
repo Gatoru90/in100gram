@@ -37,9 +37,10 @@
         <entry key="..\:/Users/lagator/Desktop/in100gram/app/src/main/res/drawable/ic_baseline_folder_24.xml" value="0.2375" />
         <entry key="..\:/Users/lagator/Desktop/in100gram/app/src/main/res/drawable/ic_baseline_insert_drive_file_24.xml" value="0.2375" />
         <entry key="..\:/Users/lagator/Desktop/in100gram/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2375" />
+        <entry key="..\:/Users/lagator/Desktop/in100gram/app/src/main/res/drawable/send_arrow.xml" value="0.237" />
         <entry key="..\:/Users/lagator/Desktop/in100gram/app/src/main/res/layout/activity_file_list.xml" value="0.2296195652173913" />
         <entry key="..\:/Users/lagator/Desktop/in100gram/app/src/main/res/layout/activity_main.xml" value="0.17074275362318841" />
-        <entry key="..\:/Users/lagator/Desktop/in100gram/app/src/main/res/layout/messenger_main.xml" value="0.2222222222222222" />
+        <entry key="..\:/Users/lagator/Desktop/in100gram/app/src/main/res/layout/messenger_main.xml" value="0.4" />
         <entry key="..\:/Users/lagator/Desktop/in100gram/app/src/main/res/layout/messenger_other_recycler.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/lagator/Desktop/in100gram/app/src/main/res/layout/messenger_recycler.xml" value="0.17074275362318841" />
         <entry key="..\:/Users/lagator/Desktop/in100gram/app/src/main/res/layout/recycler_item.xml" value="0.2296195652173913" />

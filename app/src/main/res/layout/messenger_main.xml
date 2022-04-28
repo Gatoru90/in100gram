@@ -72,9 +72,10 @@
 
         <Button
             android:id="@+id/button_gchat_send"
-            android:layout_width="85dp"
+            android:layout_width="125dp"
             android:layout_height="48dp"
             android:layout_alignParentEnd="true"
+            android:layout_marginEnd="0dp"
             android:background="?attr/selectableItemBackground"
             android:text="отправить"
             android:textColor="@color/black" />

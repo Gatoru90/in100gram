@@ -21,6 +21,8 @@
         </service>
 
         <activity android:name=".AuthActivity" />
+        <activity android:name=".RegActivity" />
+        <activity android:name=".MessengerActivity" />
         <activity android:name=".FileListActivity" />
         <activity android:name=".MainActivity"
             android:exported="true">
