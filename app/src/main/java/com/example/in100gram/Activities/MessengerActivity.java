@@ -51,43 +51,42 @@ public class MessengerActivity extends AppCompatActivity{
         SendBtn.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                MessengerRecycler.scrollToPosition(items.size());
-                adapter.notifyDataSetChanged();
+                if (editMessegeText.getText().toString().trim().length() > 0){
+                    MessengerRecycler.scrollToPosition(items.size());
+                    adapter.notifyDataSetChanged();
 
+                    MessegeText = editMessegeText.getText().toString().trim();
+                    timestamp = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());;
+                    datestamp = new SimpleDateFormat("dd MMMM", Locale.getDefault()).format(new Date());
+                    if(MessegeText != ""){
+                        try {
+                            items.add(MessegeText);
+                            timestamps.add(timestamp);
 
-
-                MessegeText = editMessegeText.getText().toString();
-                timestamp = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());;
-                datestamp = new SimpleDateFormat("dd MMMM", Locale.getDefault()).format(new Date());
-                if(MessegeText != ""){
-                    try {
-                        items.add(MessegeText);
-                        timestamps.add(timestamp);
-
-                        if(!datestamps.contains(datestamp)){
-                            datestamps.add(datestamp);
+                            if(!datestamps.contains(datestamp)){
+                                datestamps.add(datestamp);
+                            }
+                            else {
+                                datestamps.add(null);
+                            }
+                            Messobj.put("MessageText",MessegeText);
+                            Messobj.put("Timestamp",timestamp);
+                            Messobj.put("datestamp",datestamp);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                        else {
-                            datestamps.add(null);
-                        }
-                        Messobj.put("MessageText",MessegeText);
-                        Messobj.put("Timestamp",timestamp);
-                        Messobj.put("datestamp",datestamp);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                        user = 2;
+                        adapter.notifyItemInserted(user = 2);
+                        adapter.notifyItemInserted(items.size());
+                        adapter.notifyItemInserted(timestamps.size());
+                        adapter.notifyItemInserted(datestamps.size());
                     }
-                    user = 2;
-                    adapter.notifyItemInserted(user = 2);
-                    adapter.notifyItemInserted(items.size());
-                    adapter.notifyItemInserted(timestamps.size());
-                    adapter.notifyItemInserted(datestamps.size());
+                    editMessegeText.setText("");
+                    Log.d("Messobj", Messobj.toString());
+                    Log.d("user", "" + user);
+                    Log.d("datelist", datestamps.toString());
+                    Log.d("itemsSize", "Size of list = " + items.size());
                 }
-                editMessegeText.setText("");
-                Log.d("Messobj", Messobj.toString());
-                Log.d("user", "" + user);
-                Log.d("datelist", datestamps.toString());
-                Log.d("itemsSize", "Size of list = " + items.size());
-
                 return false;
             }
         });
@@ -95,38 +94,41 @@ public class MessengerActivity extends AppCompatActivity{
         SendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MessengerRecycler.scrollToPosition(items.size());
-                adapter.notifyDataSetChanged();
 
-                MessegeText = editMessegeText.getText().toString();
-                timestamp = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());;
-                datestamp = new SimpleDateFormat("dd MMMM", Locale.getDefault()).format(new Date());
-                if(MessegeText != ""){
-                    try {
-                        items.add(MessegeText);
-                        timestamps.add(timestamp);
+                if (editMessegeText.getText().toString().trim().length() > 0){
+                    MessengerRecycler.scrollToPosition(items.size());
+                    adapter.notifyDataSetChanged();
 
-                        if(!datestamps.contains(datestamp)){
-                            datestamps.add(datestamp);
+                    MessegeText = editMessegeText.getText().toString().trim();
+                    timestamp = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());;
+                    datestamp = new SimpleDateFormat("dd MMMM", Locale.getDefault()).format(new Date());
+                    if(MessegeText != ""){
+                        try {
+                            items.add(MessegeText);
+                            timestamps.add(timestamp);
+
+                            if(!datestamps.contains(datestamp)){
+                                datestamps.add(datestamp);
+                            }
+                            else {
+                                datestamps.add(null);
+                            }
+                            Messobj.put("MessageText",MessegeText);
+                            Messobj.put("Timestamp",timestamp);
+                            Messobj.put("datestamp",datestamp);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                        else {
-                            datestamps.add(null);
-                        }
-                        Messobj.put("MessageText",MessegeText);
-                        Messobj.put("Timestamp",timestamp);
-                        Messobj.put("datestamp",datestamp);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                        adapter.notifyItemInserted(user = 1);
+                        adapter.notifyItemInserted(items.size());
+                        adapter.notifyItemInserted(timestamps.size());
+                        adapter.notifyItemInserted(datestamps.size());
                     }
-                    adapter.notifyItemInserted(user = 1);
-                    adapter.notifyItemInserted(items.size());
-                    adapter.notifyItemInserted(timestamps.size());
-                    adapter.notifyItemInserted(datestamps.size());
+                    Log.d("Messobj", Messobj.toString());
+                    editMessegeText.setText("");
+                    Log.d("datelist", datestamps.toString());
+                    Log.d("itemsSize", "Size of list = " + items.size());
                 }
-                Log.d("Messobj", Messobj.toString());
-                editMessegeText.setText("");
-                Log.d("datelist", datestamps.toString());
-                Log.d("itemsSize", "Size of list = " + items.size());
             }
         });
 

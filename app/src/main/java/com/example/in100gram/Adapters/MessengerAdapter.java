@@ -53,7 +53,7 @@ public class MessengerAdapter extends RecyclerView.Adapter<MessengerAdapter.View
     private MessengerAdapter adapter;
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(MessengerAdapter.ViewHolder holder, int position) {
         //if(getItemViewType(position) == TYPE_ME){
             holder.textView.setText(items.get(position));
             holder.dateView.setText(datestamps.get(position));
@@ -107,24 +107,14 @@ public class MessengerAdapter extends RecyclerView.Adapter<MessengerAdapter.View
             dateView = itemView.findViewById(R.id.text_gchat_date_me);
             timeView = itemView.findViewById(R.id.text_gchat_timestamp_me);
 
-            textView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Log.d("ClickTest","успех");
-                    PopupMenu popupMenu = new PopupMenu(context, textView);
-                    popupMenu.getMenu().add("Удалить");
-                    popupMenu.getMenu().add("Изменить");
-                }
-            });
-
             textView.setOnLongClickListener(new View.OnLongClickListener() {
-
                 @Override
                 public boolean onLongClick(View view) {
-                    Log.d("LongClickTest","успех");
-                    PopupMenu popupMenu = new PopupMenu(context, textView);
+                    PopupMenu popupMenu = new PopupMenu(context, view);
                     popupMenu.getMenu().add("Удалить");
                     popupMenu.getMenu().add("Изменить");
+                    popupMenu.show();
+                    Log.d("LongClickTest","успех");
 
                     popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                         @Override
