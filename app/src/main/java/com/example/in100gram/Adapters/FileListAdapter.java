@@ -1,19 +1,13 @@
-package com.example.in100gram;
+package com.example.in100gram.Adapters;
 
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.IBinder;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -23,29 +17,26 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.EventListener;
 import java.util.List;
 import java.util.Objects;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.in100gram.centrifuge.Centrifuge;
+import com.example.in100gram.Activities.FileListActivity;
+import com.example.in100gram.R;
+import com.example.in100gram.Service;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import io.github.centrifugal.centrifuge.Client;
-import io.github.centrifugal.centrifuge.ConnectEvent;
-import io.github.centrifugal.centrifuge.DisconnectEvent;
-import io.github.centrifugal.centrifuge.Options;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
+public class FileListAdapter extends RecyclerView.Adapter<FileListAdapter.ViewHolder> {
 
     Context context;
     File[] filesAndFolders;
@@ -57,7 +48,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     public String JSON;
 
-    public MyAdapter(Context context, File[] filesAndFolders) {
+    public FileListAdapter(Context context, File[] filesAndFolders) {
         this.context = context;
         this.filesAndFolders = filesAndFolders;
     }
@@ -72,7 +63,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(MyAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(FileListAdapter.ViewHolder holder, int position) {
 
         File selectedFile = filesAndFolders[position];
         holder.textView.setText(selectedFile.getName());

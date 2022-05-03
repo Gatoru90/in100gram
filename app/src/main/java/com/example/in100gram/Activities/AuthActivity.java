@@ -1,4 +1,4 @@
-package com.example.in100gram;
+package com.example.in100gram.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +12,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.in100gram.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;

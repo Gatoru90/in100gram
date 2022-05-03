@@ -20,11 +20,11 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".AuthActivity" />
-        <activity android:name=".RegActivity" />
-        <activity android:name=".MessengerActivity" />
-        <activity android:name=".FileListActivity" />
-        <activity android:name=".MainActivity"
+        <activity android:name=".Activities.AuthActivity" />
+        <activity android:name=".Activities.RegActivity" />
+        <activity android:name=".Activities.MessengerActivity" />
+        <activity android:name=".Activities.FileListActivity" />
+        <activity android:name=".Activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

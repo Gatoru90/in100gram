@@ -1,4 +1,4 @@
-package com.example.in100gram;
+package com.example.in100gram.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -17,8 +17,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.in100gram.R;
+import com.example.in100gram.Service;
 import com.google.android.material.button.MaterialButton;
-import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.in100gram;
+package com.example.in100gram.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,11 +9,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.io.File;
-import java.text.DateFormat;
+import com.example.in100gram.Adapters.MessengerAdapter;
+import com.example.in100gram.R;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -53,6 +53,8 @@ public class MessengerActivity extends AppCompatActivity{
             public boolean onLongClick(View view) {
                 MessengerRecycler.scrollToPosition(items.size());
                 adapter.notifyDataSetChanged();
+
+
 
                 MessegeText = editMessegeText.getText().toString();
                 timestamp = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());;

@@ -1,4 +1,4 @@
-package com.example.in100gram;
+package com.example.in100gram.Adapters;
 
 import android.content.Context;
 import android.util.Log;
@@ -13,6 +13,8 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.in100gram.R;
 
 import org.json.JSONObject;
 
@@ -104,6 +106,16 @@ public class MessengerAdapter extends RecyclerView.Adapter<MessengerAdapter.View
             textView = itemView.findViewById(R.id.text_gchat_message_me);
             dateView = itemView.findViewById(R.id.text_gchat_date_me);
             timeView = itemView.findViewById(R.id.text_gchat_timestamp_me);
+
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("ClickTest","успех");
+                    PopupMenu popupMenu = new PopupMenu(context, textView);
+                    popupMenu.getMenu().add("Удалить");
+                    popupMenu.getMenu().add("Изменить");
+                }
+            });
 
             textView.setOnLongClickListener(new View.OnLongClickListener() {
 

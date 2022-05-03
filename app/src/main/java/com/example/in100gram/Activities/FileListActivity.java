@@ -1,4 +1,4 @@
-package com.example.in100gram;
+package com.example.in100gram.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,6 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.in100gram.Adapters.FileListAdapter;
+import com.example.in100gram.R;
 
 import java.io.File;
 
@@ -32,6 +35,6 @@ public class FileListActivity extends AppCompatActivity {
         noFilesText.setVisibility(View.INVISIBLE);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new MyAdapter(getApplicationContext(),filesAndFolders));
+        recyclerView.setAdapter(new FileListAdapter(getApplicationContext(),filesAndFolders));
     }
 }
