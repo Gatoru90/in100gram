@@ -19,7 +19,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.in100gram.R;
-import com.example.in100gram.Service;
+import com.example.in100gram.centrifuge.Service;
 import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity {

@@ -24,7 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.in100gram.Activities.FileListActivity;
 import com.example.in100gram.R;
-import com.example.in100gram.Service;
+import com.example.in100gram.centrifuge.Service;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;

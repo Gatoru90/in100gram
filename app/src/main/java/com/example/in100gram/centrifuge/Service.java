@@ -1,4 +1,4 @@
-package com.example.in100gram;
+package com.example.in100gram.centrifuge;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
@@ -6,7 +6,6 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Binder;
 import android.os.Build;
 import android.os.IBinder;
@@ -15,9 +14,6 @@ import android.view.WindowManager;
 
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
-import com.example.in100gram.centrifuge.Centrifuge;
 
 import io.github.centrifugal.centrifuge.RPCResult;
 import io.github.centrifugal.centrifuge.ReplyCallback;
