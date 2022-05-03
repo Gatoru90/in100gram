@@ -111,10 +111,11 @@ public class MessengerAdapter extends RecyclerView.Adapter<MessengerAdapter.View
                 @Override
                 public boolean onLongClick(View view) {
                     PopupMenu popupMenu = new PopupMenu(context, view);
-                    popupMenu.getMenu().add("Удалить");
+                    popupMenu.getMenu().add("Переслать");
+                    popupMenu.getMenu().add("Ответить");
                     popupMenu.getMenu().add("Изменить");
+                    popupMenu.getMenu().add("Удалить");
                     popupMenu.show();
-                    Log.d("LongClickTest","успех");
 
                     popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                         @Override
@@ -124,6 +125,12 @@ public class MessengerAdapter extends RecyclerView.Adapter<MessengerAdapter.View
                                 adapter.notifyItemRemoved(getAbsoluteAdapterPosition());
                             }
                             if (item.getTitle().equals("Изменить")) {
+
+                            }
+                            if (item.getTitle().equals("Переслать")) {
+
+                            }
+                            if (item.getTitle().equals("Ответить")) {
 
                             }
                             return true;
