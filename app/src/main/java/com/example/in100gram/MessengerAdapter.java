@@ -1,92 +1,135 @@
 package com.example.in100gram;
 
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.IBinder;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.EventListener;
 import java.util.List;
-import java.util.Objects;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.in100gram.centrifuge.Centrifuge;
-import com.google.gson.Gson;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-
-import io.github.centrifugal.centrifuge.Client;
-import io.github.centrifugal.centrifuge.ConnectEvent;
-import io.github.centrifugal.centrifuge.DisconnectEvent;
-import io.github.centrifugal.centrifuge.Options;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
+import org.json.JSONObject;
 
 public class MessengerAdapter extends RecyclerView.Adapter<MessengerAdapter.ViewHolder>{
 
     Context context;
-    Calendar calendar = Calendar.getInstance();
-    String Message = "123";
+    JSONObject messobj;
+    int user;
+    List<String> items;
+    List<String> timestamps;
+    List<String> datestamps;
+    private static final int TYPE_ME = 1;
+    private static final int TYPE_OTHER = 2;
 
-//    public MessengerAdapter(String date, String text, String timestamp) {
-//        date = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
-//        text = Message;
-//        timestamp = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
-//    }
 
-    @Override
-    public MessengerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MessengerAdapter(Context applicationContext, JSONObject messobj, List<String> items, List<String> datestamps, List<String> timestamps, int user) {
+        this.context = applicationContext;
+        this.messobj = messobj;
+        this.items = items;
+        this.datestamps = datestamps;
+        this.timestamps = timestamps;
+        this.user = user;
 
-        View view = LayoutInflater.from(context).inflate(R.layout.messenger_recycler, parent, false);
-        return new MessengerAdapter.ViewHolder(view);
     }
+
+    @NonNull
+    @Override
+    public MessengerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //if(viewType == TYPE_ME){
+            return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.messenger_recycler, parent, false));
+//        } else {
+//            return new ViewHolderOther(LayoutInflater.from(context).inflate(R.layout.messenger_other_recycler, parent, false));
+//        }
+    }
+
+    private MessengerAdapter adapter;
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        //if(getItemViewType(position) == TYPE_ME){
+            holder.textView.setText(items.get(position));
+            holder.dateView.setText(datestamps.get(position));
+            holder.timeView.setText(timestamps.get(position));
 
+            if(datestamps.get(position) == null){
+                holder.dateView.setVisibility(View.GONE);
+            }
+//        } else {
+//
+//        }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (user == 1) {
+            return TYPE_ME;
+        } else {
+            return TYPE_OTHER;
+        }
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return items.size();
+    }
+
+    public class ViewHolderOther extends RecyclerView.ViewHolder {
+
+        TextView textView;
+        TextView dateView;
+        TextView timeView;
+
+        public ViewHolderOther(View itemView) {
+            super(itemView);
+            textView = itemView.findViewById(R.id.text_gchat_message_other);
+            dateView = itemView.findViewById(R.id.text_gchat_date_other);
+            timeView = itemView.findViewById(R.id.text_gchat_timestamp_other);
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView textView;
+        TextView dateView;
+        TextView timeView;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.text_gchat_date_me);
-            textView = itemView.findViewById(R.id.text_gchat_timestamp_me);
             textView = itemView.findViewById(R.id.text_gchat_message_me);
+            dateView = itemView.findViewById(R.id.text_gchat_date_me);
+            timeView = itemView.findViewById(R.id.text_gchat_timestamp_me);
+
+            textView.setOnLongClickListener(new View.OnLongClickListener() {
+
+                @Override
+                public boolean onLongClick(View view) {
+                    Log.d("LongClickTest","успех");
+                    PopupMenu popupMenu = new PopupMenu(context, textView);
+                    popupMenu.getMenu().add("Удалить");
+                    popupMenu.getMenu().add("Изменить");
+
+                    popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            if (item.getTitle().equals("Удалить")) {
+                                adapter.items.remove(getAbsoluteAdapterPosition());
+                                adapter.notifyItemRemoved(getAbsoluteAdapterPosition());
+                            }
+                            if (item.getTitle().equals("Изменить")) {
+
+                            }
+                            return true;
+                        }
+                    });
+                    return false;
+                }
+            });
         }
     }
 }

@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/layout_group_chat"
         android:layout_width="match_parent"
@@ -20,6 +22,11 @@
             android:theme="@style/Widget.AppCompat.Toolbar"
             app:popupTheme="@style/Theme.AppCompat.Light">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity=""
+                android:text="Чат"/>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -40,6 +47,18 @@
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/view"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/noMesseges_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="Чат пустой"
+        android:visibility="invisible"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="169dp"
+        tools:layout_editor_absoluteY="356dp" />
 
     <View
         android:id="@+id/view"
