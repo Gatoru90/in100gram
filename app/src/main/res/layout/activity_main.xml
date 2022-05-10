@@ -34,4 +34,22 @@
         android:layout_margin="16dp"
         android:layout_centerInParent="true"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/test_btn"
+        android:text="send rpc"
+        android:padding="8dp"
+        android:layout_margin="16dp"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textSize="30sp"
+        android:layout_margin="16dp"
+        android:id="@+id/boundView">
+
+    </TextView>
+
 </LinearLayout>

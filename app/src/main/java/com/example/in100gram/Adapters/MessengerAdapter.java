@@ -53,6 +53,7 @@ public class MessengerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+
         if(getItemViewType(position) == TYPE_ME){
             ((ViewHolderME) holder).textViewMe.setText(items.get(position));
             ((ViewHolderME) holder).dateViewMe.setText(datestamps.get(position));
@@ -63,14 +64,15 @@ public class MessengerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             }
         }
         else {
+            Log.d("position-1", ""+(position-1));
+            Log.d("datestamps.get(position-1)", datestamps.get(position-1));
             ((ViewHolderOther) holder).textViewOther.setText(items.get(position));
             ((ViewHolderOther) holder).dateViewOther.setText(datestamps.get(position));
             ((ViewHolderOther) holder).timeViewOther.setText(timestamps.get(position));
             //((ViewHolderOther) holder).UserViewOther.setText(UserNames.get(position));
 
             Log.d("position-1", "" + (position-1));
-            if (datestamps.get(position) == null){
-                //datestamps.size() > 1 && datestamps.get(position).equals(datestamps.get(position-1))) {
+            if (datestamps.size() > 1 && datestamps.get(position).equals(datestamps.get(position-1))) {
                 ((ViewHolderOther) holder).dateViewOther.setVisibility(View.GONE);
             }
         }
@@ -112,6 +114,10 @@ public class MessengerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             textViewMe = itemView.findViewById(R.id.text_gchat_message_me);
             dateViewMe = itemView.findViewById(R.id.text_gchat_date_me);
             timeViewMe = itemView.findViewById(R.id.text_gchat_timestamp_me);
+
+//            if (datestamps.size() > 1 && datestamps.get(getItemCount()) == datestamps.get(getItemCount()-1)) {
+//                dateViewMe.setVisibility(View.GONE);
+//            }
 
             textViewMe.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override

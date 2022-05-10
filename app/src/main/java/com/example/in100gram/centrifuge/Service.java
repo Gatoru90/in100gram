@@ -15,6 +15,7 @@ import android.view.WindowManager;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
+import io.github.centrifugal.centrifuge.Client;
 import io.github.centrifugal.centrifuge.RPCResult;
 import io.github.centrifugal.centrifuge.ReplyCallback;
 import io.github.centrifugal.centrifuge.ReplyError;
@@ -22,6 +23,10 @@ import io.github.centrifugal.centrifuge.ReplyError;
 public class Service extends android.app.Service {
 
     Centrifuge centrifuge;
+
+    public Client getClient() {
+        return centrifuge.client;
+    }
 
     private final IBinder binder = new LocalBinder();
 
@@ -41,13 +46,16 @@ public class Service extends android.app.Service {
             startMyOwnForeground();
         else
             startForeground(1, new Notification());
+
+
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
         Log.i("Service", "onStartCommand flags: " + flags + " startId: " + startId);
-        centrifuge = new Centrifuge(this);
+        centrifuge = new Centrifuge(getApplicationContext());
+
         return Service.START_STICKY;
     }
 
