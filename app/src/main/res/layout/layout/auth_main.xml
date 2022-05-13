@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/boxTitles"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/LoginView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Логин"
+            android:paddingLeft="20px"
+            android:paddingRight="20px"/>
+
+        <EditText
+            android:id="@+id/LoginEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/LoginView"
+            android:hint="Введите логин"
+            android:minHeight="48dp"
+            android:paddingLeft="20px"
+            android:paddingRight="20px" />
+
+        <TextView
+            android:id="@+id/PasswordView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/LoginEdit"
+            android:paddingLeft="20px"
+            android:paddingRight="20px"
+            android:text="Пароль" />
+
+        <EditText
+            android:id="@+id/PasswordEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/PasswordView"
+            android:inputType="textPassword"
+            android:minHeight="48dp"
+            android:paddingLeft="20px"
+            android:hint="Введите пароль"
+            android:paddingRight="20px" />
+        <LinearLayout
+            android:paddingLeft="20px"
+            android:paddingRight="20px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:layout_below="@+id/PasswordEdit"
+            android:id="@+id/saveLayout"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Cохранить пароль"
+                android:id="@+id/saveText"/>
+
+            <CheckBox
+                android:id="@+id/saveCheck"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="20px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/saveLayout"
+            android:id="@+id/showLayout"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Отображать пароль"
+                android:id="@+id/showText"/>
+
+            <CheckBox
+                android:id="@+id/showCheck"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/showLayout"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/authBtn"
+                    android:layout_width="150dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:text="Вход" />
+                <Space
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:id="@+id/RegBtn"
+                    android:layout_gravity="center"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Регистрация" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

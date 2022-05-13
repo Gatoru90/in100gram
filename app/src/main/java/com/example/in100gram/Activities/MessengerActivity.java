@@ -1,18 +1,28 @@
 package com.example.in100gram.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.in100gram.Adapters.MessengerAdapter;
 import com.example.in100gram.R;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -21,9 +31,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 public class MessengerActivity extends AppCompatActivity{
     String MessegeText;
     String timestamp;
@@ -31,6 +38,22 @@ public class MessengerActivity extends AppCompatActivity{
     int user;
     Calendar calendar = Calendar.getInstance();
     JSONObject Messobj = new JSONObject();
+
+
+    private boolean checkPermission(){
+        int result = ContextCompat.checkSelfPermission(MessengerActivity.this,Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if(result == PackageManager.PERMISSION_GRANTED){
+            return true;
+        }else
+            return false;
+    }
+
+    private void requestPermission(){
+        if(ActivityCompat.shouldShowRequestPermissionRationale(MessengerActivity.this,Manifest.permission.WRITE_EXTERNAL_STORAGE)){
+            Toast.makeText(MessengerActivity.this,"Storage permission is requires,please allow from settings",Toast.LENGTH_SHORT).show();
+        }else
+            ActivityCompat.requestPermissions(MessengerActivity.this,new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE},111);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +67,29 @@ public class MessengerActivity extends AppCompatActivity{
         List<Integer> users = new LinkedList<>();
 
         Button SendBtn = findViewById(R.id.button_gchat_send);
+        Button AddFileBtn = findViewById(R.id.button_add_file);
         EditText editMessegeText = findViewById(R.id.edit_gchat_message);
         TextView noMessegesText = findViewById(R.id.noMesseges_textview);
 
         RecyclerView MessengerRecycler = findViewById(R.id.recycler_gchat);
         MessengerAdapter adapter = new MessengerAdapter(getApplicationContext(),Messobj, items, datestamps, timestamps, users, UserNames);
+
+        AddFileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(checkPermission()){
+                    //permission allowed
+                    Intent intent = new Intent(MessengerActivity.this, FileListActivity.class);
+                    String path = Environment.getExternalStorageDirectory().getPath();
+                    intent.putExtra("path",path);
+                    startActivity(intent);
+                }else {
+                    //permission not allowed
+                    requestPermission();
+                }
+            }
+        });
 
         SendBtn.setOnLongClickListener(new View.OnLongClickListener() {
             @Override

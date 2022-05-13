@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#1DE9B6"
+    tools:context=".Activities.MainActivity">
+
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/storage_btn"
+        android:text="STORAGE"
+        android:padding="8dp"
+        android:layout_margin="16dp"
+        android:layout_centerInParent="true"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cloud_btn"
+        android:text="Messanger"
+        android:padding="8dp"
+        android:layout_margin="16dp"
+        android:layout_centerInParent="true"/>
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/messenger_btn"
+        android:text="Authorization"
+        android:padding="8dp"
+        android:layout_margin="16dp"
+        android:layout_centerInParent="true"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/test_btn"
+        android:text="send rpc"
+        android:padding="8dp"
+        android:layout_margin="16dp"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textSize="30sp"
+        android:layout_margin="16dp"
+        android:id="@+id/boundView">
+
+    </TextView>
+
+</LinearLayout>

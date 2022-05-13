@@ -90,6 +90,9 @@ public class AuthActivity extends AppCompatActivity {
             {
                 saveDataNot();
             }
+
+            Intent intent = new Intent(AuthActivity.this,ContactsActivity.class);
+            startActivity(intent);
         });
 
         loadData();
