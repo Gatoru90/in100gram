@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,8 +67,8 @@ public class MessengerActivity extends AppCompatActivity{
         List<String> UserNames = new LinkedList<>();
         List<Integer> users = new LinkedList<>();
 
-        Button SendBtn = findViewById(R.id.button_gchat_send);
-        Button AddFileBtn = findViewById(R.id.button_add_file);
+        ImageButton SendBtn = findViewById(R.id.button_gchat_send);
+        ImageButton AddFileBtn = findViewById(R.id.button_add_file);
         EditText editMessegeText = findViewById(R.id.edit_gchat_message);
         TextView noMessegesText = findViewById(R.id.noMesseges_textview);
 
