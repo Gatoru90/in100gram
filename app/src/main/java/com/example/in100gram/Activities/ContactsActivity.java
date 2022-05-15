@@ -13,11 +13,11 @@ import com.example.in100gram.R;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class ContactsActivity extends AppCompatActivity {
 
-    ArrayList<Contact> ContactList;
     JSONObject Contactsobj = new JSONObject();
 
     @Override
@@ -25,17 +25,24 @@ public class ContactsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contacts_main);
 
-        ContactList = new ArrayList<>();
+        List<String> ContactList = new LinkedList<>();
 
         RecyclerView ContacsRecycler = findViewById(R.id.recycler_contacts);
-        ContactsAdapter adapter = new ContactsAdapter(this,Contactsobj,ContactList);
+        ContactsAdapter adapter = new ContactsAdapter(this,Contactsobj, ContactList);
 
-        Contact Contact = new Contact("Никита", "null");
-        ContactList.add(Contact);
-        Contact = new Contact("Ганя", "null");
-        ContactList.add(Contact);
-        Contact = new Contact("Захар", "null");
-        ContactList.add(Contact);
-        adapter.notifyDataSetChanged();
+//        Contact Contact = new Contact("Никита", "null");
+//        ContactList.add(Contact);
+//        Contact = new Contact("Ганя", "null");
+//        ContactList.add(Contact);
+//        Contact = new Contact("Захар", "null");
+//        ContactList.add(Contact);
+//        adapter.notifyDataSetChanged();
+
+        ContactList.add("Никита");
+        ContactList.add("Ганя");
+        ContactList.add("Захар");
+
+        ContacsRecycler.setLayoutManager(new LinearLayoutManager(this));
+        ContacsRecycler.setAdapter(adapter);
     }
 }

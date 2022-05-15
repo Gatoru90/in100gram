@@ -50,11 +50,9 @@ public class AuthActivity extends AppCompatActivity {
             Log.d("ShowInputType", String.valueOf(PassEdit.getInputType()));
             if(showCheck.isChecked()){
                 PassEdit.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-                LoginEdit.setText("0");
             }
             else {
                 PassEdit.setInputType(129);
-                LoginEdit.setText("1");
             }
         });
 
