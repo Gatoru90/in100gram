@@ -1,47 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_margin="1dp"
+    android:background="#ffffff"
     android:orientation="horizontal"
-    android:padding="10dp"
-    android:layout_height="wrap_content">
-
+    android:padding="8dp">
 
     <ImageView
         android:id="@+id/icon_contact"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_margin="8dp"
         android:src="@drawable/ic_baseline_account_circle_24"/>
-
-    <RelativeLayout
-        android:id="@+id/recycler_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/icon_contact">
-
-        <TextView
-            android:id="@+id/name_contact"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            tools:text="Имя контакта" />
-
-        <TextView
-            android:id="@+id/last_message_contact"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            tools:text="Последнее сообщение"/>
-
-    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/recycler_layout"
-        android:layout_marginTop="2dp"
-        android:background="@color/cardview_shadow_start_color" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/name_contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="1dp"
+            android:text="Имя контакта"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/last_message_contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="1dp"
+            android:text="Последнеее сообщение" />
+    </LinearLayout>
+
+</LinearLayout>

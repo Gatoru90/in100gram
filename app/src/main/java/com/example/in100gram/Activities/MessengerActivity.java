@@ -37,7 +37,6 @@ public class MessengerActivity extends AppCompatActivity{
     String timestamp;
     String datestamp;
     int user;
-    Calendar calendar = Calendar.getInstance();
     JSONObject Messobj = new JSONObject();
 
 
