@@ -1,9 +1,13 @@
 package com.example.in100gram.Activities;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -14,11 +18,15 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.in100gram.R;
+import com.example.in100gram.centrifuge.Service;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AuthActivity extends AppCompatActivity {
+
+    boolean mBound = false;
+    public Service mService;
 
     JSONObject obj = new JSONObject();
     JSONObject obj2 = new JSONObject();
@@ -36,6 +44,9 @@ public class AuthActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        startService(new Intent(AuthActivity.this, Service.class));
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.auth_main);
 
@@ -147,5 +158,35 @@ public class AuthActivity extends AppCompatActivity {
         PassEdit.setText(pass);
         LoginEdit.setText(login);
         saveCheck.setChecked(CheckOnOff);
+    }
+
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName className, IBinder service) {
+            Service.LocalBinder binder = (Service.LocalBinder) service;
+            mService = binder.getService();
+            mBound = true;
+
+            Log.i("Service", "Connected");
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName arg0) {
+            mBound = false;
+        }
+    };
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Intent intent = new Intent(this, Service.class);
+        bindService(intent, connection, Context.BIND_AUTO_CREATE);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unbindService(connection);
+        mBound = false;
     }
 }

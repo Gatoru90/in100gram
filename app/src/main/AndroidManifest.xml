@@ -21,17 +21,16 @@
         </service>
 
         <activity android:name=".Activities.ContactsActivity"/>
-        <activity android:name=".Activities.AuthActivity" />
-        <activity android:name=".Activities.RegActivity" />
-        <activity android:name=".Activities.MessengerActivity" />
-        <activity android:name=".Activities.FileListActivity" />
-        <activity android:name=".Activities.MainActivity"
+        <activity android:name=".Activities.AuthActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activities.RegActivity" />
+        <activity android:name=".Activities.MessengerActivity" />
+        <activity android:name=".Activities.FileListActivity" />
     </application>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 

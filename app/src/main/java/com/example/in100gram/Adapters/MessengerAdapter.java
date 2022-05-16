@@ -26,9 +26,10 @@ public class MessengerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private static final int TYPE_ME = 1;
     private static final int TYPE_OTHER = 2;
     private MessengerAdapter adapter;
+    int userAmount;
 
 
-    public MessengerAdapter(Context applicationContext, JSONObject messobj, List<String> items, List<String> datestamps, List<String> timestamps, List<Integer> users, List<String> userNames) {
+    public MessengerAdapter(Context applicationContext, JSONObject messobj, List<String> items, List<String> datestamps, List<String> timestamps, List<Integer> users, List<String> userNames, int usersAmount) {
         this.context = applicationContext;
         this.messobj = messobj;
         this.items = items;
@@ -36,6 +37,7 @@ public class MessengerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         this.timestamps = timestamps;
         this.users = users;
         this.UserNames = userNames;
+        this.userAmount = usersAmount;
     }
 
     @NonNull
@@ -53,7 +55,6 @@ public class MessengerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
         if(getItemViewType(position) == TYPE_ME){
             ((ViewHolderME) holder).textViewMe.setText(items.get(position));
             ((ViewHolderME) holder).dateViewMe.setText(datestamps.get(position));
@@ -64,6 +65,10 @@ public class MessengerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             }
         }
         else {
+            if(userAmount <= 2){
+                ((ViewHolderOther) holder).UserViewOther.setVisibility(View.GONE);
+            }
+
             Log.d("position-1", ""+(position-1));
             Log.d("datestamps.get(position-1)", datestamps.get(position-1));
             ((ViewHolderOther) holder).textViewOther.setText(items.get(position));
@@ -122,6 +127,7 @@ public class MessengerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             textViewMe.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View view) {
+                    Log.d("users",""+users);
                     PopupMenu popupMenu = new PopupMenu(context, view);
                     popupMenu.getMenu().add("Переслать");
                     popupMenu.getMenu().add("Ответить");

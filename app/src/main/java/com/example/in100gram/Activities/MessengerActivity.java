@@ -37,6 +37,7 @@ public class MessengerActivity extends AppCompatActivity{
     String timestamp;
     String datestamp;
     int user;
+    int usersAmount = 2;
     JSONObject Messobj = new JSONObject();
 
 
@@ -72,7 +73,7 @@ public class MessengerActivity extends AppCompatActivity{
         TextView noMessegesText = findViewById(R.id.noMesseges_textview);
 
         RecyclerView MessengerRecycler = findViewById(R.id.recycler_gchat);
-        MessengerAdapter adapter = new MessengerAdapter(getApplicationContext(),Messobj, items, datestamps, timestamps, users, UserNames);
+        MessengerAdapter adapter = new MessengerAdapter(getApplicationContext(),Messobj, items, datestamps, timestamps, users, UserNames, usersAmount);
 
         AddFileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
