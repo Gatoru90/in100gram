@@ -44,11 +44,12 @@ public class AuthActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        //getActionBar().hide();
         startService(new Intent(AuthActivity.this, Service.class));
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.auth_main);
+        getSupportActionBar().hide();
 
         Button authBtn = findViewById(R.id.authBtn);
         Button regBtn = findViewById(R.id.RegBtn);

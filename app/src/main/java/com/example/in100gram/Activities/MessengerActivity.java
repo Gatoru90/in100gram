@@ -60,7 +60,7 @@ public class MessengerActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.messenger_main);
-
+        getSupportActionBar().hide();
         List<String> items = new LinkedList<>();
         List<String> datestamps = new LinkedList<>();
         List<String> timestamps = new LinkedList<>();

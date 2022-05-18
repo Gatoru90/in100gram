@@ -24,7 +24,7 @@ public class ContactsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contacts_main);
-
+        getSupportActionBar().hide();
         List<String> ContactList = new LinkedList<>();
 
         RecyclerView ContacsRecycler = findViewById(R.id.recycler_contacts);
