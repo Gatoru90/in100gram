@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        startService(new Intent(MainActivity.this, Service.class));
+//        startService(new Intent(MainActivity.this, Service.class));
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

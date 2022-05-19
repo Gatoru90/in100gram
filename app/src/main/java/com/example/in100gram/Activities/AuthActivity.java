@@ -45,7 +45,7 @@ public class AuthActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //getActionBar().hide();
-        startService(new Intent(AuthActivity.this, Service.class));
+//        startService(new Intent(AuthActivity.this, Service.class));
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.auth_main);
@@ -72,6 +72,7 @@ public class AuthActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(AuthActivity.this,RegActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -160,33 +161,33 @@ public class AuthActivity extends AppCompatActivity {
         saveCheck.setChecked(CheckOnOff);
     }
 
-    private ServiceConnection connection = new ServiceConnection() {
-        @Override
-        public void onServiceConnected(ComponentName className, IBinder service) {
-            Service.LocalBinder binder = (Service.LocalBinder) service;
-            mService = binder.getService();
-            mBound = true;
-
-            Log.i("Service", "Connected");
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName arg0) {
-            mBound = false;
-        }
-    };
+//    private ServiceConnection connection = new ServiceConnection() {
+//        @Override
+//        public void onServiceConnected(ComponentName className, IBinder service) {
+//            Service.LocalBinder binder = (Service.LocalBinder) service;
+//            mService = binder.getService();
+//            mBound = true;
+//
+//            Log.i("Service1", "Connected");
+//        }
+//
+//        @Override
+//        public void onServiceDisconnected(ComponentName arg0) {
+//            mBound = false;
+//        }
+//    };
 
     @Override
     protected void onStart() {
         super.onStart();
         Intent intent = new Intent(this, Service.class);
-        bindService(intent, connection, Context.BIND_AUTO_CREATE);
+//        bindService(intent, connection, Context.BIND_AUTO_CREATE);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        unbindService(connection);
+//        unbindService(connection);
         mBound = false;
     }
 }

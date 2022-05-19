@@ -51,7 +51,7 @@ public class Service extends android.app.Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
         Log.i("Service", "onStartCommand flags: " + flags + " startId: " + startId);
-        centrifuge = new Centrifugo();
+//        centrifuge = new Centrifugo();
 
         return Service.START_STICKY;
     }

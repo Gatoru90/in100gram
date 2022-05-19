@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.example.in100gram.centrifuge.ObservePattern.Observer;
 
-public class handlerData implements Observer {
+public class HandlerData implements Observer {
     private String data;
     public String getData(){
         return data;
