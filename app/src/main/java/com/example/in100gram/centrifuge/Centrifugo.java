@@ -2,30 +2,31 @@ package com.example.in100gram.centrifuge;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.util.Log;
 
+import com.example.in100gram.centrifuge.ObservePattern.Observed;
+import com.example.in100gram.centrifuge.ObservePattern.Observer;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import io.github.centrifugal.centrifuge.Client;
 import io.github.centrifugal.centrifuge.ConnectEvent;
 import io.github.centrifugal.centrifuge.DisconnectEvent;
 import io.github.centrifugal.centrifuge.EventListener;
 import io.github.centrifugal.centrifuge.Options;
-import io.github.centrifugal.centrifuge.RPCResult;
-import io.github.centrifugal.centrifuge.ReplyCallback;
-import io.github.centrifugal.centrifuge.ReplyError;
 import io.github.centrifugal.centrifuge.ServerPublishEvent;
 
-public class Centrifugo {
+public class Centrifugo implements Observed {
     private String apiURL = "ws://192.168.24.22:8000/connection/websocket";
     private Client client;
+    private String returnData;
+    private List<Observer> observers = new ArrayList<>();
+
 
     public Centrifugo() {
-
         EventListener listener = subscribeListeners();
         client = new Client(
                 apiURL,
@@ -62,9 +63,25 @@ public class Centrifugo {
             @Override
             public void onPublish(Client client, ServerPublishEvent event) {
                 super.onPublish(client, event);
-                String data = new String(event.getData(), UTF_8);
-                Log.d("onPublish" + Calendar.getInstance().getTime(), data);
+                returnData = new String(event.getData(), UTF_8);
+                notifyObservers();
+                Log.d("onPublish" + Calendar.getInstance().getTime(), returnData);
             }
         };
+    }
+
+    @Override
+    public void addObserver(Observer o) {
+        observers.add(o);
+    }
+    @Override
+    public void removeObserver(Observer o) {
+        observers.remove(o);
+    }
+    @Override
+    public void notifyObservers() {
+        for(Observer observer: observers){
+            observer.handleEvent(returnData);
+        }
     }
 }

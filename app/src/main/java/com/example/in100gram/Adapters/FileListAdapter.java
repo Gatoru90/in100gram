@@ -126,7 +126,7 @@ public class FileListAdapter extends RecyclerView.Adapter<FileListAdapter.ViewHo
                                 @Override
                                 public void run() {
 
-                                    mService.SendRPC("rpc", JSON);
+                                    mService.getCentrifugo().sendRPC("rpc", toJSON1);
 
                                     JSONArray responseJSONArray = null;
                                     OkHttpClient client = new OkHttpClient().newBuilder()

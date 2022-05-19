@@ -16,7 +16,7 @@ public class CentrifugoReplyCallback<T> implements ReplyCallback<T> {
     @SuppressLint("LongLogTag")
     @Override
     public void onFailure(Throwable e) {
-        Log.e("SEND_RPC_FAIL" + rpcName, e.toString());
+        Log.e("SEND_RPC_FAIL " + rpcName, e.toString());
     }
     @SuppressLint("LongLogTag")
     @Override

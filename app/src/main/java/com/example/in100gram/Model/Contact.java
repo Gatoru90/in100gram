@@ -10,10 +10,7 @@ public class Contact {
     }
 
     public String getContactName() {return ContactName ;}
-
     public void setContactName(String contactName) {this.ContactName = contactName;}
-
     public String getContactAvatarSource() {return ContactAvatarSource;}
-
     public void setContactAvatarSource(String contactAvatarSource) {this.ContactAvatarSource = contactAvatarSource;}
 }
