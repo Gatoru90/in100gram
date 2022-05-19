@@ -19,7 +19,6 @@ public class FileListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_file_list);
-        getSupportActionBar().hide();
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         TextView noFilesText = findViewById(R.id.nofiles_textview);
 

@@ -21,19 +21,17 @@ import io.github.centrifugal.centrifuge.ReplyCallback;
 import io.github.centrifugal.centrifuge.ReplyError;
 
 public class Service extends android.app.Service {
-
-    Centrifuge centrifuge;
-
-    public Client getClient() {
-        return centrifuge.client;
-    }
-
-    private final IBinder binder = new LocalBinder();
-
     public class LocalBinder extends Binder {
         public Service getService() {
             return Service.this;
         }
+    }
+
+    private final IBinder binder = new LocalBinder();
+    private Centrifugo centrifuge;
+
+    public Centrifugo getCentrifugo() {
+        return centrifuge;
     }
 
     @Override
@@ -49,16 +47,14 @@ public class Service extends android.app.Service {
 
 
     }
-
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
         Log.i("Service", "onStartCommand flags: " + flags + " startId: " + startId);
-        centrifuge = new Centrifuge(getApplicationContext());
+        centrifuge = new Centrifugo();
 
         return Service.START_STICKY;
     }
-
     @RequiresApi(Build.VERSION_CODES.O)
     private void startMyOwnForeground() {
 
@@ -76,26 +72,5 @@ public class Service extends android.app.Service {
     @Override
     public IBinder onBind(Intent intent) {
         return binder;
-    }
-
-    public void SendRPC(String method, String data) {
-        Log.i("SendRPC", "method: " + method + " data: " + data);
-        if (centrifuge == null) {
-            Log.i("SendRPC", "centrifuge.client is null");
-            return;
-        }
-        centrifuge.client.rpc(method, data.getBytes(), new ReplyCallback<RPCResult>() {
-            @SuppressLint("LongLogTag")
-            @Override
-            public void onFailure(Throwable e) {
-                Log.e("SEND_RPC_FAIL", e.toString());
-            }
-            @SuppressLint("LongLogTag")
-            @Override
-            public void onDone(ReplyError error, RPCResult result) {
-
-                Log.i("SEND_RPC_SUCCESS", String.valueOf(error));
-            }
-        });
     }
 }

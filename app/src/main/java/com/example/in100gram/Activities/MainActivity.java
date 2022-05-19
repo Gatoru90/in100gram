@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
         MaterialButton storageBtn = findViewById(R.id.storage_btn);
         Button AuthBTN = findViewById(R.id.messenger_btn);
         Button MessengerBTN = findViewById(R.id.cloud_btn);

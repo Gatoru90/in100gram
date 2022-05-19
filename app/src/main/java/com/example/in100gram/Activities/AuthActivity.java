@@ -49,7 +49,6 @@ public class AuthActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.auth_main);
-        getSupportActionBar().hide();
 
         Button authBtn = findViewById(R.id.authBtn);
         Button regBtn = findViewById(R.id.RegBtn);
