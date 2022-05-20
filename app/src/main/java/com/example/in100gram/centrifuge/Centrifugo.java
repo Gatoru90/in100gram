@@ -44,7 +44,7 @@ public class Centrifugo implements Observed {
     }
     public <T> void sendRPC(String rpcName, T data){
         String stringData = new Gson().toJson(data);
-        Log.i("SendRPC", "method: " + rpcName + " data: " + stringData);
+        Log.i("SendRPC", "method " + rpcName + " data: " + stringData);
 
         this.client.rpc(rpcName, stringData.getBytes(), new CentrifugoReplyCallback<>(rpcName));
     }

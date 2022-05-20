@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.in100gram.Adapters.ContactsAdapter;
+import com.example.in100gram.Model.Chat;
 import com.example.in100gram.R;
 import com.example.in100gram.centrifuge.Centrifugo;
 import com.example.in100gram.centrifuge.HandlerData;
@@ -14,6 +15,7 @@ import com.example.in100gram.centrifuge.HandlerData;
 import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,7 +34,7 @@ public class ContactsActivity extends AppCompatActivity {
 
         Centrifugo centrifugo = new Centrifugo();
         HandlerData handlerData = new HandlerData();
-        centrifugo.addObserver(new HandlerData());
+        centrifugo.addObserver(handlerData);
         centrifugo.getClient().setConnectData("{ \"auth_id\": \"b18b04de-b7db-467c-9bb3-5a81aec0593c\" }".getBytes(StandardCharsets.UTF_8));
         centrifugo.onConnect();
 
