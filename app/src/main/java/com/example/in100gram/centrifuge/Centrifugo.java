@@ -4,8 +4,8 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 import android.util.Log;
 
-import com.example.in100gram.centrifuge.ObservePattern.Observed;
-import com.example.in100gram.centrifuge.ObservePattern.Observer;
+import com.example.in100gram.centrifuge.Handlers.CreateHandler.CentrifugeHandler;
+import com.example.in100gram.centrifuge.Handlers.CreateHandler.CentrifugeHandlerFactory;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -19,11 +19,9 @@ import io.github.centrifugal.centrifuge.EventListener;
 import io.github.centrifugal.centrifuge.Options;
 import io.github.centrifugal.centrifuge.ServerPublishEvent;
 
-public class Centrifugo implements Observed {
+public class Centrifugo{
     private String apiURL = "ws://192.168.24.22:8000/connection/websocket";
     private Client client;
-    private String returnData;
-    private List<Observer> observers = new ArrayList<>();
 
 
     public Centrifugo() {
@@ -63,25 +61,11 @@ public class Centrifugo implements Observed {
             @Override
             public void onPublish(Client client, ServerPublishEvent event) {
                 super.onPublish(client, event);
-                returnData = new String(event.getData(), UTF_8);
-                notifyObservers();
-                Log.d("onPublish" + Calendar.getInstance().getTime(), returnData);
+                String returnData = new String(event.getData(), UTF_8);
+                CentrifugeHandler handler = CentrifugeHandlerFactory.getCentrifugeHandler(returnData);
+                handler.doAction();
+                Log.d("onPublish " + Calendar.getInstance().getTime(), returnData);
             }
         };
-    }
-
-    @Override
-    public void addObserver(Observer o) {
-        observers.add(o);
-    }
-    @Override
-    public void removeObserver(Observer o) {
-        observers.remove(o);
-    }
-    @Override
-    public void notifyObservers() {
-        for(Observer observer: observers){
-            observer.handleEvent(returnData);
-        }
     }
 }

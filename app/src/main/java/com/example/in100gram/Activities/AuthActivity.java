@@ -18,7 +18,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.in100gram.R;
-import com.example.in100gram.centrifuge.Service;
+//import com.example.in100gram.centrifuge.Service;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,7 +26,7 @@ import org.json.JSONObject;
 public class AuthActivity extends AppCompatActivity {
 
     boolean mBound = false;
-    public Service mService;
+//    public Service mService;
 
     JSONObject obj = new JSONObject();
     JSONObject obj2 = new JSONObject();
@@ -180,7 +180,7 @@ public class AuthActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Intent intent = new Intent(this, Service.class);
+//        Intent intent = new Intent(this, Service.class);
 //        bindService(intent, connection, Context.BIND_AUTO_CREATE);
     }
 
