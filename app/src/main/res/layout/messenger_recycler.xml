@@ -36,6 +36,7 @@
         <LinearLayout
             android:id="@+id/layout_gchat_container_me"
             android:layout_width="wrap_content"
+            android:background="#4c8663"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 

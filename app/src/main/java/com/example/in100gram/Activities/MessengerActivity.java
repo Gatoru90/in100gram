@@ -91,6 +91,14 @@ public class MessengerActivity extends AppCompatActivity{
             }
         });
 
+        AddFileBtn.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(MessengerActivity.this, "Выбранный файл слишком велик", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+
         SendBtn.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
