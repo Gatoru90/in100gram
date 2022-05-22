@@ -24,7 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.in100gram.Activities.FileListActivity;
 import com.example.in100gram.R;
-import com.example.in100gram.centrifuge.Service;
+//import com.example.in100gram.centrifuge.Service;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -41,7 +41,7 @@ public class FileListAdapter extends RecyclerView.Adapter<FileListAdapter.ViewHo
     Context context;
     File[] filesAndFolders;
     boolean mBound = false;
-    public Service mService;
+//    public Service mService;
     int Count = 0;
 
     List<String> toJSON1 = new ArrayList<String>();
@@ -126,7 +126,7 @@ public class FileListAdapter extends RecyclerView.Adapter<FileListAdapter.ViewHo
                                 @Override
                                 public void run() {
 
-                                    mService.getCentrifugo().sendRPC("rpc", toJSON1);
+//                                    mService.getCentrifugo().sendRPC("rpc", toJSON1);
 
                                     JSONArray responseJSONArray = null;
                                     OkHttpClient client = new OkHttpClient().newBuilder()

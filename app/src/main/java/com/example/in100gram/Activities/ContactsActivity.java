@@ -7,15 +7,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.in100gram.Adapters.ContactsAdapter;
-import com.example.in100gram.Model.Chat;
 import com.example.in100gram.R;
 import com.example.in100gram.centrifuge.Centrifugo;
-import com.example.in100gram.centrifuge.HandlerData;
 
 import org.json.JSONObject;
 
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -31,14 +28,11 @@ public class ContactsActivity extends AppCompatActivity {
 
         RecyclerView ContacsRecycler = findViewById(R.id.recycler_contacts);
         ContactsAdapter adapter = new ContactsAdapter(this,Contactsobj, ContactList);
+        Centrifugo centrifugoContack = StaticCentirfugo.centrifugo;
+        centrifugoContack.getClient().setConnectData("{ \"auth_id\": \"b18b04de-b7db-467c-9bb3-5a81aec0593c\" }".getBytes(StandardCharsets.UTF_8));
+        centrifugoContack.onConnect();
 
-        Centrifugo centrifugo = new Centrifugo();
-        HandlerData handlerData = new HandlerData();
-        centrifugo.addObserver(handlerData);
-        centrifugo.getClient().setConnectData("{ \"auth_id\": \"b18b04de-b7db-467c-9bb3-5a81aec0593c\" }".getBytes(StandardCharsets.UTF_8));
-        centrifugo.onConnect();
-
-        centrifugo.sendRPC("get_chats", null);
+        centrifugoContack.sendRPC("get_chats", null);
 //        Contact Contact = new Contact("Никита", "null");
 //        ContactList.add(Contact);
 //        Contact = new Contact("Ганя", "null");
@@ -50,8 +44,17 @@ public class ContactsActivity extends AppCompatActivity {
         ContactList.add("Никита");
         ContactList.add("Ганя");
         ContactList.add("Захар");
-
         ContacsRecycler.setLayoutManager(new LinearLayoutManager(this));
         ContacsRecycler.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        try {
+//            centrifugo.getClient().close(1000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 }

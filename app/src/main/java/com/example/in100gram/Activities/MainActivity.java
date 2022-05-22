@@ -19,13 +19,13 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.in100gram.R;
-import com.example.in100gram.centrifuge.Service;
+//import com.example.in100gram.centrifuge.Service;
 import com.google.android.material.button.MaterialButton;
 
 public class MainActivity extends AppCompatActivity {
 
     boolean mBound = false;
-    public Service mService;
+//    public Service mService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,8 +90,8 @@ public class MainActivity extends AppCompatActivity {
     private ServiceConnection connection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName className, IBinder service) {
-            Service.LocalBinder binder = (Service.LocalBinder) service;
-            mService = binder.getService();
+//            Service.LocalBinder binder = (Service.LocalBinder) service;
+//            mService = binder.getService();
             mBound = true;
 
             Log.i("Service", "Connected");
@@ -106,8 +106,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Intent intent = new Intent(this, Service.class);
-        bindService(intent, connection, Context.BIND_AUTO_CREATE);
+//        Intent intent = new Intent(this, Service.class);
+//        bindService(intent, connection, Context.BIND_AUTO_CREATE);
     }
 
     @Override
