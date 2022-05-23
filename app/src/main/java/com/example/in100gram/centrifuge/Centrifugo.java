@@ -2,15 +2,17 @@ package com.example.in100gram.centrifuge;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
-import com.example.in100gram.centrifuge.Handlers.CreateHandler.CentrifugeHandler;
-import com.example.in100gram.centrifuge.Handlers.CreateHandler.CentrifugeHandlerFactory;
-import com.google.gson.Gson;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import java.util.ArrayList;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Calendar;
-import java.util.List;
 
 import io.github.centrifugal.centrifuge.Client;
 import io.github.centrifugal.centrifuge.ConnectEvent;
@@ -22,9 +24,12 @@ import io.github.centrifugal.centrifuge.ServerPublishEvent;
 public class Centrifugo{
     private String apiURL = "ws://192.168.24.22:8000/connection/websocket";
     private Client client;
+    private Context context;
+
+    public Centrifugo(Context ctx) {
+        context = ctx;
 
 
-    public Centrifugo() {
         EventListener listener = subscribeListeners();
         client = new Client(
                 apiURL,
@@ -61,11 +66,31 @@ public class Centrifugo{
             @Override
             public void onPublish(Client client, ServerPublishEvent event) {
                 super.onPublish(client, event);
-                String returnData = new String(event.getData(), UTF_8);
-                CentrifugeHandler handler = CentrifugeHandlerFactory.getCentrifugeHandler(returnData);
-                handler.doAction();
-                Log.d("onPublish " + Calendar.getInstance().getTime(), returnData);
+                String data = new String(event.getData(), UTF_8);
+                Log.d("onPublish1" + Calendar.getInstance().getTime(), data);
+
+                try {
+                    Gson gson = new Gson();
+                    Json json = gson.fromJson(data, Json.class);
+                    Log.d("ACTION_NAME", json.action);
+                }catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+
+
             }
         };
+
     }
+
+    private static class Json {
+        @SerializedName("action")
+        public String action;
+
+        @SerializedName("data")
+        public ;
+
+    }
+
 }
